@@ -1,0 +1,22 @@
+.inputField {
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 10px 15px;
+  outline: none;
+  border: 1px solid #d1dae6;
+  color: #042040;
+  font-size: 13px;
+  line-height: 1.4;
+  -webkit-transition: border 0.2s linear, box-shadow 0.2s linear;
+  -moz-transition: border 0.2s linear, box-shadow 0.2s linear;
+  transition: border 0.2s linear, box-shadow 0.2s linear;
+}
+
+.checkbox {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.checkbox input {
+  margin-right: 10px;
+}

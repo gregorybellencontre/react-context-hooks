@@ -1,0 +1,39 @@
+.pageTitle {
+  margin-left: 20px;
+}
+
+.modules {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.module {
+  width: 100%;
+}
+
+.module article {
+  margin: 20px;
+  background-color: #23d160;
+  border-radius: 4px;
+  padding: 30px;
+  color: white;
+  font-weight: bold;
+}
+
+@media (min-width: 640px) {
+  .module {
+    width: 33%;
+  }
+}
+
+@media (min-width: 960px) {
+  .module {
+    width: 33%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .module {
+    width: 25%;
+  }
+}
