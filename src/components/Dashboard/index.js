@@ -1,40 +1,32 @@
-import React, { useState } from "react";
-import DashboardHeader from "../DashboardHeader";
-import DashboardModules from "../DashboardModules";
-import SettingsModal from "../SettingsModal";
-import DashboardContext from "./context/dashboardContext";
+import React, { useReducer } from "react";
+import DashboardHeader from "./components/Header";
+import DashboardModules from "./components/ModulesList";
+import SettingsModal from "./components/SettingsModal";
+import DashboardContext from "./contexts/dashboardContext";
+import dashboardReducer, {
+  dashboardInitialState
+} from "../../reducers/dashboardReducer";
 
 import "./styles.css";
 
 export const modulesList = {
-  payroll: "Bulletins de paie",
-  absences: "Congés & absences",
-  expenses: "Notes de frais",
-  calendar: "Calendrier",
-  timeTracking: "Temps de travail",
-  orgchart: "Organigramme",
-  settings: "Gestion du compte"
+  payroll: "dashboard_module_payroll",
+  absences: "dashboard_module_absences",
+  expenses: "dashboard_module_expenses",
+  calendar: "dashboard_module_calendar",
+  timeTracking: "dashboard_module_time_tracking",
+  orgchart: "dashboard_module_orgchart",
+  settings: "dashboard_module_settings"
 };
 
 const Dashboard = () => {
-  const [firstname, setFirstname] = useState("Grégory");
-  const [jobName, setJobName] = useState("Software Engineer");
-  const [modules, setModules] = useState(["expenses", "timeTracking"]);
-  const [isModalOpened, displayModal] = useState(false);
-
-  const contextData = {
-    firstname,
-    setFirstname,
-    jobName,
-    setJobName,
-    modules,
-    setModules,
-    isModalOpened,
-    displayModal
-  };
+  const [dashboardState, dashboardDispatch] = useReducer(
+    dashboardReducer,
+    dashboardInitialState
+  );
 
   return (
-    <DashboardContext.Provider value={contextData}>
+    <DashboardContext.Provider value={[dashboardState, dashboardDispatch]}>
       <DashboardHeader />
 
       <div className="pageContent">

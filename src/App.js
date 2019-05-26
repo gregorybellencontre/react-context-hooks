@@ -1,22 +1,26 @@
 import React from "react";
 import { Switch, Route } from "react-router";
 import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
 
-import store from "./store";
+import TranslationContext from "./contexts/translationContext";
+import useTranslation from "./hooks/useTranslation";
+
+import Header from "./components/Header";
 import Dashboard from "./components/Dashboard";
 
-import "./App.css";
-
 function App() {
+  const [t, setLocale, locale] = useTranslation();
+
   return (
-    <Provider store={store}>
+    <TranslationContext.Provider value={[t, setLocale, locale]}>
+      <Header />
+
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Dashboard} />
         </Switch>
       </BrowserRouter>
-    </Provider>
+    </TranslationContext.Provider>
   );
 }
 
